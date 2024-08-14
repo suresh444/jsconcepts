@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Display entred text in different color</title>
+  </head>
+  <body>
+    <div>
+      <h4>Enter text to display in different colors</h4>
+      <input type="text" id="inputText" />
+      <button onclick="displayText()">Submit</button>
+    </div>
+    <div id="output"></div>
+    <script>
+      function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
 
+      function displayText() {
+        const inputText = document.getElementById('inputText').value;
+        const outputDiv = document.getElementById('output');
+        outputDiv.innerHTML = '';
+        console.log(inputText);
+        for (let char of inputText) {
+          console.log(char);
+          const span = document.createElement('span');
+          span.textContent = char;
+          console.log(getRandomColor());
+          span.style.color = getRandomColor();
+          console.log(span);
+          outputDiv.appendChild(span);
+        }
+      }
+    </script>
+  </body>
+</html>
