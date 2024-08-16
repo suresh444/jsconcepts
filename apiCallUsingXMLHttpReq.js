@@ -5,9 +5,8 @@
 -> for post xhr.send(queryParams)
 */
 
-
 const xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://dummyjson.com/users', true);
+xhr.open("GET", "https://dummyjson.com/users", true);
 xhr.onload = function () {
   if (xhr.status >= 200) {
     console.log(JSON.parse(xhr.responseText));
@@ -15,8 +14,8 @@ xhr.onload = function () {
   }
 };
 
-xhr.onerror = function() {
+xhr.onerror = function () {
   // for handling network error
-  console.log(''Request failed);
-}
+  console.log("Request failed");
+};
 xhr.send();
