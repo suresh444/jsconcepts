@@ -13,8 +13,8 @@
     <div id="output"></div>
     <script>
       function getRandomColor() {
-        const letters = '0123456789ABCDEF';
-        let color = '#';
+        const letters = "0123456789ABCDEF";
+        let color = "#";
         for (let i = 0; i < 6; i++) {
           color += letters[Math.floor(Math.random() * 16)];
         }
@@ -22,13 +22,13 @@
       }
 
       function displayText() {
-        const inputText = document.getElementById('inputText').value;
-        const outputDiv = document.getElementById('output');
-        outputDiv.innerHTML = '';
+        const inputText = document.getElementById("inputText").value;
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "";
         console.log(inputText);
         for (let char of inputText) {
           console.log(char);
-          const span = document.createElement('span');
+          const span = document.createElement("span");
           span.textContent = char;
           console.log(getRandomColor());
           span.style.color = getRandomColor();
