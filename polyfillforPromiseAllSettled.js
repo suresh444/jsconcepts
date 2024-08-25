@@ -1,5 +1,6 @@
 /* 
 Promise.allSettled will return everything if one of the promise fails also
+o/p : [{status: fulfilled, value: []}, {status:rejected, reason: "api failed"}]
 */
 
 const usersUrl = "https://dummyjson.com/users";
