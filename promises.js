@@ -25,6 +25,26 @@ function makeAPIcall(url) {
   });
 }
 
+function makePostAPIcall(url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    const queryParams = JSON.stringify({
+      title: "I am in love with someone.",
+      userId: 5,
+    });
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.open("POST", url);
+    xhr.onload = () => {
+      if (xhr.status >= 200) {
+        resolve(JSON.parse(xhr.responseText));
+      } else {
+        reject(new Error("Failed"));
+      }
+    };
+    xhr.send(queryParams);
+  });
+}
+
 makeAPIcall("https://dummyjson.com/users")
   .then((res) => {
     console.log(res);
