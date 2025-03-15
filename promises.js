@@ -6,6 +6,7 @@ promise.all() : To make multiple api calls we can use promise.all but if one of 
 promise.allsettled(): This will handle multiple api calls it will ensure that it will get all the data. If one of the api call fails also it will show 'fulfilled' or 'rejected' status
 
 Promise.race(): This method returns the promise as soon as one of the promises in the array is rejected or resolved. 
+Promise.any(): This method returns the promise if atleast one of the promise is resolved.
 */
 
 // Api call usinhg promise
