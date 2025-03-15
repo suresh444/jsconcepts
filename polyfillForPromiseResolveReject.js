@@ -43,9 +43,49 @@ function promisePolyfill(executor) {
   executor(resolve, reject);
 }
 
+//simplified version
+
+function simplifiedPromisePolyfill(functionFromCallingMethod) {
+  let value = null;
+  let onResolve = null;
+  let onReject = null;
+  function resolve(response) {
+    //this method will be called once we get the avluef rom api
+    //assigning response from api to local value
+    value = response;
+    //here Onresolve is a function which can take value as input
+    onResolve(value);
+  }
+
+  function reject(error) {
+    value = error;
+    onReject(error);
+  }
+
+  this.then = (callback) => {
+    //this method will be called first
+    onResolve = callback;
+    /*
+      Here we are returing this so that we can use optional chaing
+      prom.then((el) => console.log(el))
+      .catch((err) => console.log(err));
+      if we dont return then we need to use them as seperately
+      prom.then((el) => console.log(el));
+      prom.catch((err) => console.log(err));
+    */
+    return this;
+  };
+  this.catch = (callback) => {
+    onReject = callback;
+    return this;
+  };
+
+  functionFromCallingMethod(resolve, reject);
+}
+
 let prom = new promisePolyfill((resolve, reject) => {
   setTimeout((el) => {
     resolve(2);
   }, 1000);
 });
-prom.then((el) => console.log(el));
+prom.then((el) => console.log(el)).catch((err) => console.log(err));
