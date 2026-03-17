@@ -13,6 +13,7 @@ obj.getName()();
 // o/p : The arrow function captures this from the getname, which is obj...when we immediately call returned 
 // arrow function (obj.getName()()) it logs obj.name
 
+_____________________________________________________________________________________________________________
 2)
 
 getName() {
@@ -28,3 +29,17 @@ obj.getName()();
 const fn = obj.getName;
 fn()(); //undefined
 // calliong fn() means getname is no longer bound to obj
+
+______________________________________________________________________________________________________________
+3)
+
+function greet() {
+  console.log(this.name);
+}
+
+const user = { name: "Suresh" };
+
+greet.call(user);
+
+// o/p: suresh
+______________________________________________________________________________________________________________
